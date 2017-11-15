@@ -1,0 +1,30 @@
+{
+  "name": "nodejsangularjsdemo",
+  "version": "1.0.0",
+  "description": "a sample web site by node.js and angularjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/majingze0508/nodejsAngularJSDemo.git"
+  },
+  "author": "Jingze Ma",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/majingze0508/nodejsAngularJSDemo/issues"
+  },
+  "homepage": "https://github.com/majingze0508/nodejsAngularJSDemo#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "fs": "0.0.1-security",
+    "mysql": "^2.15.0",
+    "path": "^0.12.7",
+    "pug": "^2.0.0-rc.4"
+  },
+  "devDependencies": {
+    "jshint": "^2.9.5"
+  }
+}
