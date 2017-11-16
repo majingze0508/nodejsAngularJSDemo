@@ -1,0 +1,14 @@
+form(name='loginForm' id='loginForm' role='form' ng-controller='validateCtrl' style='display: block' novalidatec)
+	.form-group
+		label(for='username') Username
+		input.form-control(type='text' name='username' id='username' ng-model='user' required)
+		span(style='color:red' ng-show='loginForm.username.$dirty && loginForm.username.$invalid')
+			span(ng-show='loginForm.username.$error.required') Username is required.
+	.form-group
+		label(for='password') Password
+		input.form-control(type='password' name='password' id='password' ng-model='password' required)
+		span(style='color:red' ng-show='loginForm.password.$dirty && loginForm.password.$invalid')
+			span(ng-show='loginForm.password.$error.required') Password is required.
+	.form-actions
+		button.btn.btn-primary(type='submit' id='loginbt1' ng-click='login()') Login
+		button.btn.btn-link(type='button' id='registerbt1') Register

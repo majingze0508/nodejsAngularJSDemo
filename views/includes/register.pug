@@ -1,0 +1,23 @@
+form(name='registerForm' id='registerForm' role='form' ng-controller='registerCtrl' style='display: none' novalidatec)
+	.form-group
+		label(for='username') Username
+		input.form-control(type='text' name='username2' id='username2' ng-model='user2' required)
+		span(style='color:red' ng-show='registerForm.username2.$dirty && registerForm.username2.$invalid')
+			span(ng-show='registerForm.username2.$error.required') Username is required.
+	.form-group
+		label(for='password') Password
+		input.form-control(type='password' name='password2' id='password2' ng-model='password2' required)
+		span(style='color:red' ng-show='registerForm.password2.$dirty && registerForm.password2.$invalid')
+			span(ng-show='registerForm.password2.$error.required') Password is required.
+	.form-group
+		label(for='confirmpassword') Confirm Password
+		input.form-control(type='password' name='confirmpassword2' id='confirmpassword2' ng-model='confirmPassword2' required)
+		span(style='color:red' ng-show='registerForm.confirmpassword2.$dirty && registerForm.confirmpassword2.$invalid')
+			span(ng-show='registerForm.confirmpassword2.$error.required') Password is required.
+	.form-group
+		label(for='role') Role
+		select(class='form-control form-control-sm' name='role' ng-model='multipleSelect')
+			option(ng-repeat='option in availableOptions' value='{{option.name}}') {{option.name}}
+	.form-actions
+		button.btn.btn-primary(type='submit' id='registerbt2' ng-click='register()') Register
+		button.btn.btn-link(type='button' id='loginbt2') Login

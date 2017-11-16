@@ -3,23 +3,11 @@ html(lang='en')
 	head
 		include includes/header.pug
 		script(src='/js/authen.js')
+		link(rel='stylesheet' href='/css/login.css' type='text/css')
 	body
 		.container-fluid.standard-bg#home
-			.col-md-6.col-md-offset-3()
-				h2 Login
-				form(name='loginForm' role='form' ng-app='authen' ng-controller='validateCtrl' novalidatec)
-					.form-group
-						label(for='username') Username
-						input.form-control(type='text' name='username' id='username' ng-model='user' required)
-						span(style='color:red' ng-show='loginForm.user.$dirty && loginForm.user.$invalid')
-							span(ng-show='loginForm.user.$error.required') Username is required.
-					.form-group
-						label(for='password') Password
-						input.form-control(type='password' name='password' id='password' ng-model='password' required)
-						span(style='color:red' ng-show='loginForm.password.$dirty && loginForm.password.$invalid')
-							span(ng-show='loginForm.password.$error.required') Password is required.
-					.form-actions
-						button.btn.btn-primary(type='submit') Login
-						button.btn.btn-link(type='button') Register
+			.col-md-6.col-md-offset-3(ng-app='Authentication')
+				include includes/login.pug
+				include includes/register.pug
 			
 	
