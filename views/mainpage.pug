@@ -3,28 +3,57 @@ html(lang='en')
 	head
 		include includes/header.pug
 		link(rel='stylesheet' href='/css/main.css' type='text/css')
+		script(src="/js/mainpage.js" type="text/javascript")
 	body
-		.container-fluid.standard-bg
-			nav(class='navbar navbar-expand-lg navbar-light bg-light')
-				a(class='navbar-brand' href='#') Library System
-				button(class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation")
-					span.navbar-toggler-icon
-				div.collapse.navbar-collapse#navbarSupportedContent
-			ul(class="navbar-nav mr-auto")
-				li(class="nav-item active")
-					a(class="nav-link" href="#") Home
-						span(class="sr-only") (current)
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
+		#home.banner(ng-app='mainPageModule')
+			.header
+				.container
+					.logo
+						h1
+							a(href="#") Magic Library
+			.top-menu(ng-controller='mainController')
+				.container
+					nav.cl-effect-1
+						span(class="menu")
+							img(src="/images/nav-icon.png" alt="")
+						ul(id='navbar')
+							li(ng-repeat='item in navItems' id='{{item.id}}')
+								a.scroll(ng-href='{{item.href}}') {{item.text}}
+			.banner-form
+				.container
+					p Search Book
+				form(id='searchform' class='form-inline' role='form' ng-controller='mainController')
+					.form-group
+						input(type="text" class="form-control" id="inputSearch" placeholder="Book Title" ng-model='bookTitle')
+					button(type="submit" class="btn btn-primary" ng-click='search()') Search
+		#about.about
+			.container
+				h3.abt About
+				.about-top
+					p Library Summary
+				.about-grids
+					.col-md-6.about-grid-info
+						p This is a public library system on-line. Every user can borrow and return books from this web site.
+					.col-md-6.about-pic
+						img(src="/images/img1.jpg" class="img-responsive" alt="")
+					.clearfix
+		#activities.activities
+			.container
+				h3.ser Activities
+				.activities-grids
+					.activities-grid
+						.col-md-4.activities-pic
+							img(src="/images/s1.jpg" class="img-responsive" alt="")
+						.col-md-8.activities-info
+							h3 Children Story
+							p Every Saturday 11:00am to 12:00am. One teacher tell a interesting story to kids
+						.clearfix
+					.activities-grid
+						.col-md-4.activities-pic
+							img(src="/images/s2.jpg" class="img-responsive" alt="")
+						.col-md-8.activities-info
+							h3 Drawing activity
+							p Every Sunday 11:00am to 12:00am. Kid can go here to draw.
+						.clearfix
+						
+				

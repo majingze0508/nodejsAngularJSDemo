@@ -15,13 +15,12 @@ exports.getUser = function(req, res) {
 	  if (results != '')
 	  {
 		  var response = { username: results[0].username };
-		  console.log(response);
 		  res.json(response);
 	  }
 	  else
       {
 		  var response = { error: 'No record' };
-	      res.json(response);
+	      res.send(404);
 	  }	
 	});
 };
