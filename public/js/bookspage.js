@@ -1,12 +1,12 @@
-var app = angular.module('mainPageModule', []);
-app.controller('mainController', ['$scope', '$http', '$window', function($scope, $http, $window) {
+var app = angular.module('booksModule', []);
+app.controller('booksController', ['$scope', '$http', '$window', function($scope, $http, $window) {
 	$scope.bookTitle = '';
+	$scope.bookCount = 0;
 	$scope.search = function() {
 		$http.post('/book', {title: $scope.bookTitle})
 			.then(function(response) {
-				alert(response.data.books);
-				var arrStr = encodeURIComponent(JSON.stringify(response.data.books));
-				$window.location.href = '/books?data=' + arrStr;
+				console.log(response.data);
+				$window.location.href = '/books?data=' + response.data;
 			}, function(response) {
 				alert("No Record");
 			});
@@ -16,9 +16,18 @@ app.controller('mainController', ['$scope', '$http', '$window', function($scope,
 	};
 	$scope.documents = function() {
 		$window.location.href = '/documents?username=';
-	}
+	};
 	$scope.profile = function() {
 		$window.location.href = '/profiles?username=';
+	};
+	$scope.getBooks = function(books) {
+        $scope.booklist = books;
+	};
+	$scope.select = function() {
+        $scope.bookCount++;
+	}
+	$scope.borrow = function() {
+
 	}
 }]);
 $(document).ready(function() {

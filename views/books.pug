@@ -1,0 +1,52 @@
+doctype html
+html(lang='en')
+	head
+		include includes/header.pug
+		link(rel='stylesheet' href='/css/booklist.css' type='text/css')
+		script(src="/js/bookspage.js" type="text/javascript")
+	body
+		- var booklist = JSON.parse(books)
+		.banner(ng-app='booksModule')
+			.header
+				.container
+					.logo
+						h1
+							a(href="#") Magic Library
+			.top-menu
+				.container
+					a.scroll(ng-href='#')
+						i(class="fa fa-home fa-fw")
+						| &nbsp;Home
+			.body
+				.container
+					form( novalidate class="simple-form")
+						.bookList.table-responsive(ng-controller='booksController')
+							table.table.table-condensed.table-hover(id='bookstable')
+								thead
+									tr
+										th you select {{bookCount}} books
+									tr
+										th SELECT
+										th TITLE
+										th ISBN
+										th AUTHOR
+										th CATEGORY
+										th PRICE
+										th QUANTITY
+								tbody
+									tr.bookinfo(ng-repeat = "book in booklist")
+									each book in booklist
+										tr.bookinfo(ng-click="select()")
+											td
+												input(type="checkbox" name="bookoption" ng-click="select()")
+											td #{book.title}
+											td #{book.isbn}
+											td #{book.author}
+											td #{book.category}
+											td #{book.price}
+											td #{book.quantity}
+						button.btn.btn-primary(type="button" ng-click="borrow") Borrow
+						button.btn.btn-primary(ng-click="cancel") Cancel
+						
+							
+			

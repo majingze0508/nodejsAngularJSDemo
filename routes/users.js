@@ -2,19 +2,23 @@ var mysql      = require('mysql');
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : 'maziteng0309',
+  password : 'Maziteng0309',
   database: 'testdb'
 });
 
 
 exports.getUser = function(req, res) {
 	var user = req.body;
+	if (!req.session.user || req.session.user !== user.username) {
+		global.href = '/';
+	}
 	connection.query('SELECT * FROM users WHERE username = ? and password = ?', [user.username, user.password], function(err, results) {
 	  if (err) throw err;
 	  
 	  if (results != '')
 	  {
 		  var response = { username: results[0].username };
+		  req.session.user = results[0].username;
 		  res.json(response);
 	  }
 	  else
@@ -42,4 +46,4 @@ exports.addUser = function(req, res) {
 	      res.json(response);
 	  }	
 	});
-}
+};
